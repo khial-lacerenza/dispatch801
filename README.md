@@ -12,4 +12,4 @@ mvn clean verify
 mvn install
 ```
 
-Then run the Main class
+Then run the Main class to test
