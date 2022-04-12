@@ -1,36 +1,12 @@
 package com.lk.fret;
 
-import org.jspace.ActualField;
+import com.lk.fret.Model.Entreprise;
 import org.jspace.Space;
 
-public class FourniseurMateriau implements Runnable {
-
-    private static int ID = 1;
-    private final int id;
-    private final Space tupleSpaceMaterial;
-    private OffreMateriel offreMateriel;
-    private boolean sent = false;
+public class FourniseurMateriau extends Entreprise {
+        private Space tupleSpaceTransport;
 
     public FourniseurMateriau(Space tupleSpaceMaterial) {
-        this.id = ID++;
-        this.tupleSpaceMaterial = tupleSpaceMaterial;
-        this.offreMateriel = new OffreMateriel();
-    }
-
-    public void ajoutOffre() throws InterruptedException {
-        tupleSpaceMaterial.put("offre-" + id, offreMateriel);
-        System.out.println("Fournisseur " + id + " ajoute une offre");
-    }
-
-    @Override
-    public void run() {
-        try {
-            while (!sent && tupleSpaceMaterial.queryp(new ActualField("appelOffreMaterielOuvert")) != null) {
-                ajoutOffre();
-                sent = true;
-            }
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        super(tupleSpaceMaterial, new OffreMateriel(), "FournisseurMateriau");
     }
 }

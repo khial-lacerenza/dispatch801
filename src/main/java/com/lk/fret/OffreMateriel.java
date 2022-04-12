@@ -1,49 +1,30 @@
 package com.lk.fret;
 
-import java.util.Random;
+import com.lk.fret.Model.Offre;
+import com.lk.fret.Model.Produit;
 
-public class OffreMateriel {
+import java.security.SecureRandom;
 
-    // generate random numbers between n range
-    public int getRandomNumber(int min, int max) {
-        Random random = new Random();
-        return random.ints(min, max).findFirst().getAsInt();
-    }
+public class OffreMateriel extends Offre {
 
-    private int quantite, prix;
-    private String produit;
-    private int nbMois;
+    private Produit produit;
 
     public OffreMateriel() {
-        this.quantite = getRandomNumber(5, 20); // en miller d'unités
-        this.prix = getRandomNumber(10,370);   // en millier d'euros
-        this.produit = "Chaussettes";
-        this.nbMois = getRandomNumber(1,5);
+        super(new int[]{5, 20}, new int[]{10, 370}, new int[]{1, 5});
+        this.produit = Produit.values()[new SecureRandom().nextInt(Produit.values().length)];
     }
 
-    public int getQuantite() {
-        return quantite;
-    }
-
-    public int getPrix() {
-        return prix;
-    }
-
-    public String getProduit() {
+    public Produit getProduit() {
         return produit;
-    }
-
-    public int getNbMois() {
-        return nbMois;
     }
 
     @Override
     public String toString() {
-        return "OffreMateriel{" +
-                "quantite=" + quantite +
-                ", prix=" + prix +
-                ", produit='" + produit + '\'' +
-                ", nbMois=" + nbMois +
+        return "Offre{" +
+                "quantite=" + getQuantite() +
+                ", duree=" + getDuree() +
+                ", prix=" + getPrix() +
+                ", produit=" + produit +
                 '}';
     }
 }

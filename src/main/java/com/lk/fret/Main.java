@@ -16,16 +16,16 @@ public class Main {
         maitreOeuvre.debutAppeldOffreMateriel();
         maitreOeuvre.debutAppeldOffreTransport();
 
-//        for (int i = 0; i < 5; i++) {
-        SocieteTransport societeTransport = new SocieteTransport(espaceTransport);
+        for (int i = 0; i < 5; i++) {
         FourniseurMateriau fourniseurMateriau = new FourniseurMateriau(espaceMateriau);
+        SocieteTransport societeTransport = new SocieteTransport(espaceTransport);
         new Thread(fourniseurMateriau).start();
         new Thread(societeTransport).start();
-//        }
+        }
 
-//        Thread.sleep(1000);
-//
-//        maitreOeuvre.recupOffreMateriel();
-//        maitreOeuvre.recupOffreTransport();
+        Thread.sleep(1000);
+
+        maitreOeuvre.recupOffreMateriel();
+        maitreOeuvre.recupOffreTransport();
     }
 }

@@ -18,33 +18,21 @@ public class MaitreOeuvre {
         this.tupleSpaceTransport = tupleSpaceTransport;
     }
 
-
-    public void appelOffreMateriel(String type, int quantite) throws InterruptedException {
-        Tuple tuple = new Tuple(type, quantite);
-        tupleSpaceMaterial.put(tuple);
-    }
-
-    public void appelOffreTransport(String type, int quantite) throws InterruptedException {
-        Tuple tuple = new Tuple(type, quantite);
-        tupleSpaceTransport.put(tuple);
-    }
-
     public void debutAppeldOffreMateriel() throws InterruptedException {
-        Tuple tuple = new Tuple("appelOffreMaterielOuvert");
+        Tuple tuple = new Tuple("appelOffreOuvert");
         tupleSpaceMaterial.put(tuple);
     }
 
     public void debutAppeldOffreTransport() throws InterruptedException {
-        Tuple tuple = new Tuple("appelOffreTransportOuvert");
+        Tuple tuple = new Tuple("appelOffreOuvert");
         tupleSpaceTransport.put(tuple);
     }
 
     public void recupOffreMateriel() throws InterruptedException {
-        tupleSpaceMaterial.put(new ActualField("appelOffreMaterielOuvert"));
+        tupleSpaceMaterial.put(new ActualField("appelOffreOuvert"));
 
         boolean isEmpty = false;
         Object[] offre = tupleSpaceMaterial.getp(new FormalField(String.class), new FormalField(OffreMateriel.class));
-        System.out.println(offre);
         while (!isEmpty) {
             if(offre == null) {
                 isEmpty = true;
@@ -56,11 +44,10 @@ public class MaitreOeuvre {
     }
 
     public void recupOffreTransport() throws InterruptedException {
-        tupleSpaceMaterial.put(new ActualField("appelOffreTransportOuvert"));
+        tupleSpaceMaterial.put(new ActualField("appelOffreOuvert"));
 
         boolean isEmpty = false;
         Object[] offre = tupleSpaceTransport.getp(new FormalField(String.class), new FormalField(OffreTransport.class));
-        System.out.println(offre);
         while (!isEmpty) {
             if (offre == null) {
                 isEmpty = true;
