@@ -19,8 +19,5 @@ public class Main {
         MaitreOeuvre maitreOeuvre = new MaitreOeuvre(espaceMateriau, espaceTransport);
         SocieteTransport societeTransport = new SocieteTransport(espaceTransport);
         FourniseurMateriau fourniseurMateriau = new FourniseurMateriau(espaceMateriau);
-
-
     }
-
 }

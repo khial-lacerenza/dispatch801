@@ -1,5 +1,6 @@
 package com.lk.fret;
 
+import org.jspace.ActualField;
 import org.jspace.Space;
 import org.jspace.Tuple;
 
@@ -24,6 +25,4 @@ public class MaitreOeuvre {
         Tuple tuple = new Tuple(type, quantite);
         tupleSpaceTransport.put(tuple);
     }
-
-
 }
