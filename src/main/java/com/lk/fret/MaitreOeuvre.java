@@ -16,13 +16,18 @@ public class MaitreOeuvre {
     }
 
 
-    public void ajoutOffreMaterial(String type, int quantite) throws InterruptedException {
+    public void appelOffreMateriel(String type, int quantite) throws InterruptedException {
         Tuple tuple = new Tuple(type, quantite);
         tupleSpaceMaterial.put(tuple);
     }
 
-    public void ajoutOffreTransport(String type, int quantite) throws InterruptedException {
+    public void appelOffreTransport(String type, int quantite) throws InterruptedException {
         Tuple tuple = new Tuple(type, quantite);
         tupleSpaceTransport.put(tuple);
+    }
+
+    public void recupOffreMateriel()
+    {
+
     }
 }

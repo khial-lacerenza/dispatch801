@@ -15,8 +15,8 @@ public class SocieteTransport implements Runnable {
         this.offreTransport = new OffreTransport();
     }
 
-    public void ajouteOffre() throws InterruptedException {
-        tupleSpaceTransport.put("offre", offreTransport);
+    public void ajoutOffre() throws InterruptedException {
+        tupleSpaceTransport.put("offre-" + id, offreTransport);
     }
 
     @Override

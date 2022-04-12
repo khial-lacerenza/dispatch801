@@ -15,8 +15,8 @@ public class FourniseurMateriau implements Runnable {
         this.offreMateriel = new OffreMateriel();
     }
 
-    public void ajoutOffre(OffreMateriel offreMateriel) throws InterruptedException {
-        tupleSpaceMaterial.put("offre" + id, offreMateriel);
+    public void ajoutOffre() throws InterruptedException {
+        tupleSpaceMaterial.put("offre-" + id, offreMateriel);
     }
 
     @Override
