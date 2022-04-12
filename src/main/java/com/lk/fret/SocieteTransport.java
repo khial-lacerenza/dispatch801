@@ -5,8 +5,8 @@ import org.jspace.Space;
 public class SocieteTransport implements Runnable {
 
     private static int ID =0;
-    private int id;
-    private Space tupleSpaceTransport;
+    private final int id;
+    private final Space tupleSpaceTransport;
     private OffreTransport offreTransport;
 
     public SocieteTransport(Space tupleSpaceTransport) {
