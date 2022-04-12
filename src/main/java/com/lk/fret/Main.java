@@ -7,17 +7,25 @@ import org.jspace.Space;
 public class Main {
 
     public static void main(String[] argv) throws InterruptedException {
-        Space inbox = new SequentialSpace();
 
         Space espaceTransport = new SequentialSpace();
         Space espaceMateriau = new SequentialSpace();
 
-        inbox.put("Hello World!");
-        Object[] tuple = inbox.get(new FormalField(String.class));
-        System.out.println(tuple[0]);
-
         MaitreOeuvre maitreOeuvre = new MaitreOeuvre(espaceMateriau, espaceTransport);
+
+        maitreOeuvre.debutAppeldOffreMateriel();
+        maitreOeuvre.debutAppeldOffreTransport();
+
+//        for (int i = 0; i < 5; i++) {
         SocieteTransport societeTransport = new SocieteTransport(espaceTransport);
         FourniseurMateriau fourniseurMateriau = new FourniseurMateriau(espaceMateriau);
+        new Thread(fourniseurMateriau).start();
+        new Thread(societeTransport).start();
+//        }
+
+//        Thread.sleep(1000);
+//
+//        maitreOeuvre.recupOffreMateriel();
+//        maitreOeuvre.recupOffreTransport();
     }
 }

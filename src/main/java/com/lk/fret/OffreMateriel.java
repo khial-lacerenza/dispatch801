@@ -36,4 +36,14 @@ public class OffreMateriel {
     public int getNbMois() {
         return nbMois;
     }
+
+    @Override
+    public String toString() {
+        return "OffreMateriel{" +
+                "quantite=" + quantite +
+                ", prix=" + prix +
+                ", produit='" + produit + '\'' +
+                ", nbMois=" + nbMois +
+                '}';
+    }
 }

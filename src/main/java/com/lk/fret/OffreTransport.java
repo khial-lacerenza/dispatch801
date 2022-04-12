@@ -33,4 +33,13 @@ public class OffreTransport {
     public int getPrix() {
         return prix;
     }
+
+    @Override
+    public String toString() {
+        return "OffreTransport{" +
+                "quantite=" + quantite +
+                ", duree=" + duree +
+                ", prix=" + prix +
+                '}';
+    }
 }
