@@ -7,14 +7,11 @@ import java.util.Date;
 public class FourniseurMateriau implements Runnable {
 
     private Space tupleSpaceMaterial;
-
+    private OffreMateriel offreMateriel;
 
     public FourniseurMateriau(Space tupleSpaceMaterial) {
         this.tupleSpaceMaterial = tupleSpaceMaterial;
-    }
-
-    public void offreMateriel(String type, int quantite) throws InterruptedException {
-        tupleSpaceMaterial.put(type, quantite);
+        this.offreMateriel = new OffreMateriel();
     }
 
     @Override
