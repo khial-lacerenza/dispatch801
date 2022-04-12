@@ -10,7 +10,7 @@ public class FourniseurMateriau {
         this.tupleSpaceMaterial = tupleSpaceMaterial;
     }
 
-    public void fournirMateriel(String type, int quantite) throws InterruptedException {
+    public void offreMateriel(String type, int quantite) throws InterruptedException {
         tupleSpaceMaterial.put(type, quantite);
     }
 }
