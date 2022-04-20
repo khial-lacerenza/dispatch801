@@ -6,6 +6,7 @@ module com.lk.fret {
     requires org.kordamp.ikonli.javafx;
     requires org.kordamp.bootstrapfx.core;
     requires common;
+    requires com.jfoenix;
 
     opens com.lk.fret to javafx.fxml;
     exports com.lk.fret;

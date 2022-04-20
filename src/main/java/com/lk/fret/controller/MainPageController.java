@@ -1,10 +1,10 @@
 package com.lk.fret.controller;
 
+import com.jfoenix.controls.JFXButton;
 import com.lk.fret.model.FourniseurMateriau;
 import com.lk.fret.model.MaitreOeuvre;
 import com.lk.fret.model.SocieteTransport;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import org.jspace.SequentialSpace;
@@ -19,7 +19,7 @@ public class MainPageController {
     @FXML
     public GridPane gridPane;
     @FXML
-    private Button startBtn;
+    private JFXButton startBtn;
 
     @FXML
     protected void onstartBtnClick() throws InterruptedException {
