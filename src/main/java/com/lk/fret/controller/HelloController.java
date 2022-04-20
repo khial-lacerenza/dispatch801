@@ -1,4 +1,4 @@
-package com.lk.fret.Controller;
+package com.lk.fret.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;

@@ -1,4 +1,4 @@
-package com.lk.fret.Controller;
+package com.lk.fret.controller;
 
 import com.lk.fret.model.FourniseurMateriau;
 import com.lk.fret.model.MaitreOeuvre;
