@@ -19,17 +19,12 @@ public class MainPage extends Application {
     private Stage primaryStage;
     private AnchorPane rootLayout;
 
-    Space espaceTransport = new SequentialSpace();
-    Space espaceMateriau = new SequentialSpace();
-    MaitreOeuvre maitreOeuvre = new MaitreOeuvre(espaceMateriau, espaceTransport);
-
     @Override
     public void start(Stage primaryStage) throws Exception {
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("Fret");
         
         initRootLayout();
-        startJob();
     }
     /**
      * Initializes the root layout.
@@ -53,23 +48,5 @@ public class MainPage extends Application {
 
     public static void main(String[] args) {
         launch();
-    }
-
-    public void startJob() throws InterruptedException {
-
-        maitreOeuvre.debutAppeldOffreMateriel();
-        maitreOeuvre.debutAppeldOffreTransport();
-
-        for (int i = 0; i < 5; i++) {
-            FourniseurMateriau fourniseurMateriau = new FourniseurMateriau(espaceMateriau);
-            SocieteTransport societeTransport = new SocieteTransport(espaceTransport);
-            new Thread(fourniseurMateriau).start();
-            new Thread(societeTransport).start();
-        }
-
-        Thread.sleep(1000);
-
-        maitreOeuvre.recupOffreMateriel();
-        maitreOeuvre.recupOffreTransport();
     }
 }

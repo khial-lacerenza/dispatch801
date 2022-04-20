@@ -9,4 +9,6 @@ module com.lk.fret {
 
     opens com.lk.fret to javafx.fxml;
     exports com.lk.fret;
+    exports com.lk.fret.Controller;
+    opens com.lk.fret.Controller to javafx.fxml;
 }
