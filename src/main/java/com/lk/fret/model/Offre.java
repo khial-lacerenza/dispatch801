@@ -1,4 +1,4 @@
-package com.lk.fret.Model;
+package com.lk.fret.model;
 
 import java.util.Random;
 

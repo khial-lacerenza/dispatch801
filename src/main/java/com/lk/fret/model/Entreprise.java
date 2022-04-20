@@ -1,10 +1,7 @@
-package com.lk.fret.Model;
+package com.lk.fret.model;
 
-import com.lk.fret.Model.Offre;
 import org.jspace.ActualField;
 import org.jspace.Space;
-
-import java.util.Random;
 
 public class Entreprise implements Runnable {
 

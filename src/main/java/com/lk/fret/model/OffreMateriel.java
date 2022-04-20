@@ -1,7 +1,4 @@
-package com.lk.fret;
-
-import com.lk.fret.Model.Offre;
-import com.lk.fret.Model.Produit;
+package com.lk.fret.model;
 
 import java.security.SecureRandom;
 

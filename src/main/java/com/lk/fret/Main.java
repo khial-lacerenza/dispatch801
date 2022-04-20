@@ -1,8 +1,11 @@
 package com.lk.fret;
 
-import org.jspace.FormalField;
+import com.lk.fret.model.FourniseurMateriau;
+import com.lk.fret.model.MaitreOeuvre;
+import com.lk.fret.model.SocieteTransport;
 import org.jspace.SequentialSpace;
 import org.jspace.Space;
+
 
 public class Main {
 
@@ -17,10 +20,10 @@ public class Main {
         maitreOeuvre.debutAppeldOffreTransport();
 
         for (int i = 0; i < 5; i++) {
-        FourniseurMateriau fourniseurMateriau = new FourniseurMateriau(espaceMateriau);
-        SocieteTransport societeTransport = new SocieteTransport(espaceTransport);
-        new Thread(fourniseurMateriau).start();
-        new Thread(societeTransport).start();
+            FourniseurMateriau fourniseurMateriau = new FourniseurMateriau(espaceMateriau);
+            SocieteTransport societeTransport = new SocieteTransport(espaceTransport);
+            new Thread(fourniseurMateriau).start();
+            new Thread(societeTransport).start();
         }
 
         Thread.sleep(1000);

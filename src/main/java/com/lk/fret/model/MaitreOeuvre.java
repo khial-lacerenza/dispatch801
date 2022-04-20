@@ -1,11 +1,9 @@
-package com.lk.fret;
+package com.lk.fret.model;
 
 import org.jspace.ActualField;
 import org.jspace.FormalField;
 import org.jspace.Space;
 import org.jspace.Tuple;
-
-import java.util.List;
 
 public class MaitreOeuvre {
 

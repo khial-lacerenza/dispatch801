@@ -1,6 +1,4 @@
-package com.lk.fret;
-
-import com.lk.fret.Model.Offre;
+package com.lk.fret.model;
 
 public class OffreTransport extends Offre {
 
