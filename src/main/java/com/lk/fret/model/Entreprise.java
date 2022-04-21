@@ -1,9 +1,10 @@
 package com.lk.fret.model;
 
+import javafx.concurrent.Task;
 import org.jspace.ActualField;
 import org.jspace.Space;
 
-public class Entreprise implements Runnable {
+public class Entreprise extends Task<Void> {
 
     private static int ID = 1;
     private final int id;
@@ -25,7 +26,7 @@ public class Entreprise implements Runnable {
     }
 
     @Override
-    public void run() {
+    protected Void call() throws Exception {
         try {
             while (!sent && tupleSpaceMaterial.queryp(new ActualField("appelOffreOuvert")) == null) {
                 ajoutOffre();
@@ -34,6 +35,6 @@ public class Entreprise implements Runnable {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+        return null;
     }
-
 }
