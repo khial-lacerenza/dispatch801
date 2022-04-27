@@ -6,6 +6,7 @@ public class OffreMateriel extends Offre {
 
     private Produit produit;
 
+
     public OffreMateriel() {
         super(new int[]{5, 20}, new int[]{10, 370}, new int[]{1, 5});
         this.produit = Produit.values()[new SecureRandom().nextInt(Produit.values().length)];
