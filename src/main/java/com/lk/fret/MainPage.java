@@ -23,7 +23,7 @@ public class MainPage extends Application {
     public void start(Stage primaryStage) throws Exception {
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("Fret");
-        
+        this.primaryStage.setResizable(false);
         initRootLayout();
     }
     /**
@@ -36,6 +36,8 @@ public class MainPage extends Application {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainPage.class.getResource("MainPage.fxml"));
             rootLayout = loader.load();
+
+
 
             // Show the scene containing the root layout.
             Scene scene = new Scene(rootLayout);

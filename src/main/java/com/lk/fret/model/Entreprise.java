@@ -31,6 +31,11 @@ public class Entreprise extends Task<Void> {
         super.running();
     }
 
+
+    public String getName() {
+        return name;
+    }
+
     @Override
     protected Void call() throws Exception {
         try {
