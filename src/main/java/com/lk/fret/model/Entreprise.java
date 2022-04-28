@@ -7,7 +7,6 @@ import org.jspace.Tuple;
 
 public class Entreprise extends Task<Void> {
 
-
     private final int id;
     private final Space tupleSpaceMaterial;
     private Offre offre;
@@ -24,7 +23,10 @@ public class Entreprise extends Task<Void> {
     public void ajoutOffre() throws InterruptedException {
         tupleSpaceMaterial.put("offre-" + id, offre);
         System.out.println(name + " " + id + ": ajoute une offre");
+    }
 
+    public int getId() {
+        return id;
     }
 
     @Override
@@ -32,25 +34,24 @@ public class Entreprise extends Task<Void> {
         super.running();
     }
 
-
     public String getName() {
         return name;
     }
 
+    public Offre getOffre() {
+        return offre;
+    }
+
     @Override
-    protected Void call() throws Exception {
+    protected Void call() {
         try {
             while (!sent && tupleSpaceMaterial.queryp(new ActualField("appelOffreOuvert")) == null) {
                 ajoutOffre();
                 sent = true;
             }
-            System.out.println(tupleSpaceMaterial.queryp(new ActualField("resultatMeilleurOffre")) == null);
-            while(tupleSpaceMaterial.queryp(new ActualField("resultatMeilleurOffre")) == null){
-                System.out.println(tupleSpaceMaterial.queryp(new ActualField("resultatMeilleurOffre")) == null);
 
-                Object[] tuple = tupleSpaceMaterial.queryp(new ActualField("resultMeilleurOffre"));
-                System.out.println("ici"+ tuple[1]);
-            }
+            Object[] tuple = tupleSpaceMaterial.query(new ActualField("resultMeilleurOffre"));
+            System.out.println("fin");
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

@@ -1,15 +1,17 @@
 package com.lk.fret.model;
 
+import javafx.concurrent.Task;
 import org.jspace.ActualField;
 import org.jspace.FormalField;
 import org.jspace.Space;
 import org.jspace.Tuple;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 
-public class MaitreOeuvre {
+public class MaitreOeuvre extends Task<Void> {
 
 
     private Space tupleSpaceMaterial;
@@ -36,7 +38,7 @@ public class MaitreOeuvre {
 
         Offre meilleurOffre = (Offre) offre[1];
         int meilleurOffreID = Integer.parseInt( ((String) offre[0]).split("offre-")[1]);
-        double ratioMeilleurOffre= (meilleurOffre.getPrix()/meilleurOffre.getQuantite())*meilleurOffre.getDuree();
+        double ratioMeilleurOffre= (meilleurOffre.getPrix()/meilleurOffre.getQuantite()) * meilleurOffre.getDuree();
 
         while (!isEmpty) {
             if(offre == null) {
@@ -46,7 +48,6 @@ public class MaitreOeuvre {
                 double ratioOffre = (((Offre) offre[1]).getPrix()/((Offre) offre[1]).getQuantite())*((Offre) offre[1]).getDuree();
 
                 if (ratioOffre < ratioMeilleurOffre) {
-                    meilleurOffre = (Offre) offre[1];
                     meilleurOffreID = Integer.parseInt(((String) offre[0]).split("offre-")[1]);
                     ratioMeilleurOffre = ratioOffre;
                 }
@@ -73,7 +74,6 @@ public class MaitreOeuvre {
                 double ratioOffre = (((Offre) offre[1]).getPrix()/((Offre) offre[1]).getQuantite())*((Offre) offre[1]).getDuree();
 
                 if (ratioOffre < ratioMeilleurOffre) {
-                    meilleurOffre = (Offre) offre[1];
                     meilleurOffreID = Integer.parseInt(((String) offre[0]).split("offre-")[1]);
                     ratioMeilleurOffre = ratioOffre;
                 }
@@ -84,4 +84,22 @@ public class MaitreOeuvre {
         tupleSpaceTransport.put(new Tuple("resultatMeilleurOffre", meilleurOffreID));
     }
 
+
+    @Override
+    protected Void call() throws Exception {
+        debutAppeldOffreMateriel();
+        debutAppeldOffreTransport();
+
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException interrupted) {
+            if (isCancelled()) {
+                updateMessage("Cancelled");
+            }
+        }
+
+        recupOffreMateriel();
+        recupOffreTransport();
+        return null;
+    }
 }

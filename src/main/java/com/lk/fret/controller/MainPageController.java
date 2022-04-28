@@ -18,6 +18,8 @@ public class MainPageController {
 
     public JFXListView<String> transportList;
     public JFXListView<String> materiauxList;
+    public JFXListView<String> transportOffreList;
+    public JFXListView<String> materiauxOffreList;
 
     @FXML
     private JFXButton startBtn;
@@ -29,22 +31,21 @@ public class MainPageController {
 
     public void startNego() throws InterruptedException {
 
-        maitreOeuvre.debutAppeldOffreMateriel();
-        maitreOeuvre.debutAppeldOffreTransport();
 
         for (int i = 0; i < 5; i++) {
-            FourniseurMateriau fourniseurMateriau = new FourniseurMateriau(espaceMateriau);
-            SocieteTransport societeTransport = new SocieteTransport(espaceTransport);
+            FourniseurMateriau fourniseurMateriau = new FourniseurMateriau(espaceMateriau, materiauxList, materiauxOffreList);
+            SocieteTransport societeTransport = new SocieteTransport(espaceTransport, transportList, transportOffreList);
             Thread fm = new Thread(fourniseurMateriau);
             Thread st = new Thread(societeTransport);
             fm.setDaemon(true);
             st.setDaemon(true);
             fm.start();
             st.start();
-
         }
 
-        maitreOeuvre.recupOffreMateriel();
-        maitreOeuvre.recupOffreTransport();
+        Thread maitreOeuvreThread = new Thread(maitreOeuvre);
+        maitreOeuvreThread.setDaemon(true);
+        maitreOeuvreThread.start();
+
     }
 }
