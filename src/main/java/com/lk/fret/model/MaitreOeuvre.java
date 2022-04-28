@@ -17,11 +17,23 @@ public class MaitreOeuvre extends Task<Void> {
     }
 
     public void debutAppeldOffreMateriel() throws InterruptedException {
+        System.out.println("Appel offre materiel ouvert");
         tupleSpaceMaterial.put("appelOffreOuvert");
     }
 
     public void debutAppeldOffreTransport() throws InterruptedException {
+        System.out.println("Appel offre transport ouvert");
         tupleSpaceTransport.put("appelOffreOuvert");
+    }
+
+    public void finAppeldOffreMateriel() throws InterruptedException {
+        System.out.println("Appel offre materiel ferme");
+        System.out.println(tupleSpaceMaterial.get(new ActualField("appelOffreOuvert"))[0]);
+    }
+
+    public void finAppeldOffreTransport() throws InterruptedException {
+        System.out.println("Appel offre transport ferme");
+        System.out.println(tupleSpaceTransport.get(new ActualField("appelOffreOuvert"))[0]);
     }
 
     public void recupOffreMateriel() throws InterruptedException {
@@ -48,7 +60,6 @@ public class MaitreOeuvre extends Task<Void> {
         }
         System.out.println("Meilleur offre materiel: " + meilleurOffreID);
         tupleSpaceMaterial.put("resultatMeilleurOffre", meilleurOffreID);
-        System.out.println(tupleSpaceMaterial.get(new ActualField("resultatMeilleurOffre")));
     }
 
     public void recupOffreTransport() throws InterruptedException {
@@ -75,7 +86,6 @@ public class MaitreOeuvre extends Task<Void> {
         }
         System.out.println("Meilleur offre transport: " + meilleurOffreID);
         tupleSpaceTransport.put("resultatMeilleurOffre", meilleurOffreID);
-        System.out.println(tupleSpaceTransport.get(new ActualField("resultatMeilleurOffre")));
     }
 
 
@@ -91,6 +101,9 @@ public class MaitreOeuvre extends Task<Void> {
                 updateMessage("Cancelled");
             }
         }
+
+        finAppeldOffreMateriel();
+        finAppeldOffreTransport();
 
         recupOffreTransport();
         recupOffreMateriel();

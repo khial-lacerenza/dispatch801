@@ -2,6 +2,7 @@ package com.lk.fret.model;
 
 import javafx.concurrent.Task;
 import org.jspace.ActualField;
+import org.jspace.FormalField;
 import org.jspace.Space;
 
 public class Entreprise extends Task<Void> {
@@ -22,6 +23,15 @@ public class Entreprise extends Task<Void> {
     public void ajoutOffre() throws InterruptedException {
         tupleSpace.put("offre-" + id, offre);
         System.out.println(name + " " + id + ": ajoute une offre");
+    }
+
+    public void verifMeilleurOffre() throws InterruptedException {
+       Object[] tuple = tupleSpace.query(new ActualField("resultatMeilleurOffre"), new FormalField(Integer.class));
+       if ((int) tuple[1] == id) {
+           System.out.println("Moi thread n°" +id+ " j'ai gagné l'appel d'offre");
+       }else {
+           System.out.println("Moi thread n°" +id+ " j'ai perdu l'appel d'offre");
+       }
     }
 
     public int getId() {
@@ -47,8 +57,9 @@ public class Entreprise extends Task<Void> {
             tupleSpace.query(new ActualField("appelOffreOuvert"));
             ajoutOffre();
 
-            tupleSpace.query(new ActualField("resultatMeilleurOffre"));
-            System.out.println("fin");
+
+
+            verifMeilleurOffre();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
