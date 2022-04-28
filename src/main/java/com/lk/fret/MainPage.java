@@ -1,5 +1,6 @@
 package com.lk.fret;
 
+import com.jfoenix.controls.JFXListView;
 import com.lk.fret.model.FourniseurMateriau;
 import com.lk.fret.model.MaitreOeuvre;
 import com.lk.fret.model.SocieteTransport;
@@ -19,13 +20,17 @@ public class MainPage extends Application {
     private Stage primaryStage;
     private AnchorPane rootLayout;
 
+    public JFXListView<String> transportList;
+    public JFXListView<String> materiauxList;
+    public JFXListView<String> transportOffreList;
+    public JFXListView<String> materiauxOffreList;
+
     @Override
     public void start(Stage primaryStage) throws Exception {
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("Fret");
         this.primaryStage.setResizable(false);
         initRootLayout();
-//        this.primaryStage.getScene().lookup("testh").
     }
     /**
      * Initializes the root layout.
@@ -37,7 +42,6 @@ public class MainPage extends Application {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainPage.class.getResource("MainPage.fxml"));
             rootLayout = loader.load();
-
 
 
             // Show the scene containing the root layout.

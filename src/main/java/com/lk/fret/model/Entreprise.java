@@ -5,6 +5,8 @@ import org.jspace.ActualField;
 import org.jspace.Space;
 import org.jspace.Tuple;
 
+import java.security.SecureRandom;
+
 public class Entreprise extends Task<Void> {
 
     private final int id;

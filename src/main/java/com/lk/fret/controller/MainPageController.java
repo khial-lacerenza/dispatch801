@@ -24,9 +24,18 @@ public class MainPageController {
     @FXML
     private JFXButton startBtn;
 
+    private boolean started = false;
+
+
+
     @FXML
     protected void onStartBtnClick() throws InterruptedException {
-        startNego();
+        if(!started)
+        {
+            startNego();
+            started = true;
+            startBtn.setDisable(true);
+        }
     }
 
     public void startNego() throws InterruptedException {

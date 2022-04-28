@@ -9,15 +9,15 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane id="root" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lk.fret.controller.MainPageController">
+<AnchorPane id="root" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lk.fret.controller.MainPageController">
    <children>
-      <HBox prefHeight="400.0" prefWidth="600.0">
+      <HBox prefHeight="600.0" prefWidth="800.0">
          <children>
             <VBox maxWidth="180.0" minHeight="180.0" minWidth="180.0" prefHeight="200.0" prefWidth="100.0">
                <children>
                   <Label prefHeight="17.0" prefWidth="150.0" text="Maitre d'oeuvre">
                      <VBox.margin>
-                        <Insets left="15.0" right="15.0" top="115.0" />
+                        <Insets left="15.0" right="15.0" top="175.0" />
                      </VBox.margin>
                   </Label>
                   <JFXListView maxHeight="180.0" maxWidth="180.0" minHeight="180.0" minWidth="120.0" prefHeight="180.0" prefWidth="180.0">
@@ -33,16 +33,16 @@
                </children>
             </VBox>
             <Separator orientation="VERTICAL" prefHeight="200.0" />
-            <VBox prefHeight="400.0" prefWidth="201.0">
+            <VBox prefHeight="600.0" prefWidth="508.0">
                <children>
                   <Label prefHeight="17.0" prefWidth="184.0" text="Espace de tuples transport">
                      <VBox.margin>
-                        <Insets left="15.0" top="40.0" />
+                        <Insets left="15.0" top="70.0" />
                      </VBox.margin>
                   </Label>
-                  <JFXListView fx:id="transportOffreList" maxHeight="201.0" maxWidth="1.7976931348623157E308" minHeight="150.0" minWidth="185.0" prefHeight="150.0" prefWidth="197.0">
+                  <JFXListView fx:id="transportOffreList" maxHeight="201.0" maxWidth="1.7976931348623157E308" minHeight="150.0" minWidth="185.0" prefHeight="200.0" prefWidth="335.0">
                      <VBox.margin>
-                        <Insets bottom="25.0" left="15.0" right="15.0" />
+                        <Insets bottom="15.0" left="15.0" right="15.0" />
                      </VBox.margin>
                   </JFXListView>
                   <Label layoutX="10.0" layoutY="10.0" prefHeight="17.0" prefWidth="183.0" text="Espace de tuples materiaux">
@@ -50,7 +50,7 @@
                         <Insets left="15.0" />
                      </VBox.margin>
                   </Label>
-                  <JFXListView fx:id="materiauxOffreList" layoutX="10.0" layoutY="10.0" maxHeight="0.0" maxWidth="1.7976931348623157E308" minHeight="150.0" minWidth="185.0" prefHeight="150.0" prefWidth="185.0">
+                  <JFXListView fx:id="materiauxOffreList" layoutX="10.0" layoutY="10.0" maxHeight="191.0" maxWidth="1.7976931348623157E308" minHeight="150.0" minWidth="185.0" prefHeight="200.0" prefWidth="335.0">
                      <VBox.margin>
                         <Insets bottom="15.0" left="15.0" right="15.0" />
                      </VBox.margin>
@@ -58,12 +58,24 @@
                </children>
             </VBox>
             <Separator orientation="VERTICAL" prefHeight="200.0" />
-            <VBox layoutX="210.0" layoutY="10.0" prefHeight="400.0" prefWidth="206.0">
+            <VBox layoutX="210.0" layoutY="10.0" prefHeight="567.0" prefWidth="386.0">
                <children>
-                  <Label text="Société de transport" />
-                  <JFXListView fx:id="transportList" maxHeight="0.0" maxWidth="1.7976931348623157E308" minHeight="200.0" minWidth="185.0" prefHeight="200.0" prefWidth="185.0" />
-                  <Label layoutX="10.0" layoutY="10.0" text="Entreprises de Materiaux" />
-                  <JFXListView fx:id="materiauxList" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="200.0" minWidth="185.0" prefHeight="200.0" prefWidth="185.0" />
+                  <Label text="Société de transport">
+                     <VBox.margin>
+                        <Insets left="15.0" top="70.0" />
+                     </VBox.margin></Label>
+                  <JFXListView fx:id="transportList" maxHeight="0.0" maxWidth="1.7976931348623157E308" minHeight="200.0" minWidth="185.0" prefHeight="200.0" prefWidth="185.0">
+                     <VBox.margin>
+                        <Insets bottom="15.0" left="15.0" right="15.0" />
+                     </VBox.margin></JFXListView>
+                  <Label layoutX="10.0" layoutY="10.0" text="Entreprises de Materiaux">
+                     <VBox.margin>
+                        <Insets left="15.0" right="15.0" />
+                     </VBox.margin></Label>
+                  <JFXListView fx:id="materiauxList" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="200.0" minWidth="185.0" prefHeight="200.0" prefWidth="185.0">
+                     <VBox.margin>
+                        <Insets left="15.0" right="15.0" />
+                     </VBox.margin></JFXListView>
                </children>
             </VBox>
          </children>

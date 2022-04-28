@@ -1,7 +1,16 @@
 package com.lk.fret.model;
 
 import com.jfoenix.controls.JFXListView;
+import javafx.animation.AnimationTimer;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.application.Platform;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.util.Duration;
 import org.jspace.Space;
+
+import java.security.SecureRandom;
 
 public class FourniseurMateriau extends Entreprise {
 
@@ -24,6 +33,8 @@ public class FourniseurMateriau extends Entreprise {
     @Override
     public void ajoutOffre() throws InterruptedException {
         super.ajoutOffre();
+        SecureRandom random = new SecureRandom();
+        int randomInt = random.nextInt(3);
         materiaux.getItems().add(getId() + " : " + getOffre());
     }
 }
