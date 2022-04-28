@@ -55,7 +55,8 @@ public class MaitreOeuvre extends Task<Void> {
             offre = tupleSpaceMaterial.getp(new FormalField(String.class), new FormalField(OffreMateriel.class));
         }
         System.out.println("Meilleur offre materiel: " + meilleurOffreID);
-        tupleSpaceMaterial.put(new Tuple("resultatMeilleurOffre", meilleurOffreID));
+        tupleSpaceMaterial.put(new Tuple("resultatMeilleurOffre", meilleurOffre));
+        System.out.println(tupleSpaceMaterial.getp(new FormalField(String.class), new FormalField(Offre.class)));
     }
 
     public void recupOffreTransport() throws InterruptedException {
@@ -81,7 +82,8 @@ public class MaitreOeuvre extends Task<Void> {
             offre = tupleSpaceTransport.getp(new FormalField(String.class), new FormalField(OffreTransport.class));
         }
         System.out.println("Meilleur offre transport: " + meilleurOffreID);
-        tupleSpaceTransport.put(new Tuple("resultatMeilleurOffre", meilleurOffreID));
+        tupleSpaceTransport.put(new Tuple("resultatMeilleurOffre", meilleurOffre));
+        System.out.println(tupleSpaceTransport.getp(new FormalField(String.class), new FormalField(Offre.class)));
     }
 
 
@@ -98,8 +100,8 @@ public class MaitreOeuvre extends Task<Void> {
             }
         }
 
-        recupOffreMateriel();
         recupOffreTransport();
+        recupOffreMateriel();
         return null;
     }
 }
