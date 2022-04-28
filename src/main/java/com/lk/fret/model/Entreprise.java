@@ -3,6 +3,7 @@ package com.lk.fret.model;
 import javafx.concurrent.Task;
 import org.jspace.ActualField;
 import org.jspace.Space;
+import org.jspace.Tuple;
 
 public class Entreprise extends Task<Void> {
 
@@ -42,6 +43,13 @@ public class Entreprise extends Task<Void> {
             while (!sent && tupleSpaceMaterial.queryp(new ActualField("appelOffreOuvert")) == null) {
                 ajoutOffre();
                 sent = true;
+            }
+            System.out.println(tupleSpaceMaterial.queryp(new ActualField("resultatMeilleurOffre")) == null);
+            while(tupleSpaceMaterial.queryp(new ActualField("resultatMeilleurOffre")) == null){
+                System.out.println(tupleSpaceMaterial.queryp(new ActualField("resultatMeilleurOffre")) == null);
+
+                Object[] tuple = tupleSpaceMaterial.queryp(new ActualField("resultMeilleurOffre"));
+                System.out.println("ici"+ tuple[1]);
             }
         } catch (InterruptedException e) {
             e.printStackTrace();

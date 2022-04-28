@@ -25,6 +25,7 @@ public class MainPage extends Application {
         this.primaryStage.setTitle("Fret");
         this.primaryStage.setResizable(false);
         initRootLayout();
+//        this.primaryStage.getScene().lookup("testh").
     }
     /**
      * Initializes the root layout.
