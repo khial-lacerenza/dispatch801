@@ -40,6 +40,9 @@ public class MainPageController {
 
     public void startNego() throws InterruptedException {
 
+        Thread maitreOeuvreThread = new Thread(maitreOeuvre);
+        maitreOeuvreThread.setDaemon(true);
+        maitreOeuvreThread.start();
 
         for (int i = 0; i < 5; i++) {
             FourniseurMateriau fourniseurMateriau = new FourniseurMateriau(espaceMateriau, materiauxList, materiauxOffreList);
@@ -52,9 +55,7 @@ public class MainPageController {
             st.start();
         }
 
-        Thread maitreOeuvreThread = new Thread(maitreOeuvre);
-        maitreOeuvreThread.setDaemon(true);
-        maitreOeuvreThread.start();
+
 
     }
 }

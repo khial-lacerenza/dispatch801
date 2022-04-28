@@ -33,8 +33,6 @@ public class FourniseurMateriau extends Entreprise {
     @Override
     public void ajoutOffre() throws InterruptedException {
         super.ajoutOffre();
-        SecureRandom random = new SecureRandom();
-        int randomInt = random.nextInt(3);
         materiaux.getItems().add(getId() + " : " + getOffre());
     }
 }

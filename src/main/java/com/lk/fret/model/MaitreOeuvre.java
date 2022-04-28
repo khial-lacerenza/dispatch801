@@ -4,12 +4,6 @@ import javafx.concurrent.Task;
 import org.jspace.ActualField;
 import org.jspace.FormalField;
 import org.jspace.Space;
-import org.jspace.Tuple;
-
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.List;
 
 public class MaitreOeuvre extends Task<Void> {
 
@@ -23,13 +17,11 @@ public class MaitreOeuvre extends Task<Void> {
     }
 
     public void debutAppeldOffreMateriel() throws InterruptedException {
-        Tuple tuple = new Tuple("appelOffreOuvert");
-        tupleSpaceMaterial.put(tuple);
+        tupleSpaceMaterial.put("appelOffreOuvert");
     }
 
     public void debutAppeldOffreTransport() throws InterruptedException {
-        Tuple tuple = new Tuple("appelOffreOuvert");
-        tupleSpaceTransport.put(tuple);
+        tupleSpaceTransport.put("appelOffreOuvert");
     }
 
     public void recupOffreMateriel() throws InterruptedException {
@@ -55,8 +47,8 @@ public class MaitreOeuvre extends Task<Void> {
             offre = tupleSpaceMaterial.getp(new FormalField(String.class), new FormalField(OffreMateriel.class));
         }
         System.out.println("Meilleur offre materiel: " + meilleurOffreID);
-        tupleSpaceMaterial.put(new Tuple("resultatMeilleurOffre", meilleurOffre));
-        System.out.println(tupleSpaceMaterial.getp(new FormalField(String.class), new FormalField(Offre.class)));
+        tupleSpaceMaterial.put("resultatMeilleurOffre", meilleurOffreID);
+        System.out.println(tupleSpaceMaterial.get(new ActualField("resultatMeilleurOffre")));
     }
 
     public void recupOffreTransport() throws InterruptedException {
@@ -82,8 +74,8 @@ public class MaitreOeuvre extends Task<Void> {
             offre = tupleSpaceTransport.getp(new FormalField(String.class), new FormalField(OffreTransport.class));
         }
         System.out.println("Meilleur offre transport: " + meilleurOffreID);
-        tupleSpaceTransport.put(new Tuple("resultatMeilleurOffre", meilleurOffre));
-        System.out.println(tupleSpaceTransport.getp(new FormalField(String.class), new FormalField(Offre.class)));
+        tupleSpaceTransport.put("resultatMeilleurOffre", meilleurOffreID);
+        System.out.println(tupleSpaceTransport.get(new ActualField("resultatMeilleurOffre")));
     }
 
 
@@ -93,7 +85,7 @@ public class MaitreOeuvre extends Task<Void> {
         debutAppeldOffreTransport();
 
         try {
-            Thread.sleep(1000);
+            Thread.sleep(2000);
         } catch (InterruptedException interrupted) {
             if (isCancelled()) {
                 updateMessage("Cancelled");
