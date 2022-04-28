@@ -12,15 +12,25 @@ import org.jspace.Space;
 
 public class MainPageController {
 
+
+
     Space espaceTransport = new SequentialSpace();
     Space espaceMateriau = new SequentialSpace();
-    MaitreOeuvre maitreOeuvre = new MaitreOeuvre(espaceMateriau, espaceTransport);
 
+    @FXML
+    public JFXListView<String> maitreOeuvreChoix;
+    @FXML
     public JFXListView<String> transportList;
+    @FXML
     public JFXListView<String> materiauxList;
+    @FXML
     public JFXListView<String> transportOffreList;
+    @FXML
     public JFXListView<String> materiauxOffreList;
-
+    @FXML
+    public Label labelTransportOffre;
+    @FXML
+    public Label labelMateriauxOffre;
     @FXML
     private JFXButton startBtn;
 
@@ -40,13 +50,14 @@ public class MainPageController {
 
     public void startNego() throws InterruptedException {
 
+        MaitreOeuvre maitreOeuvre = new MaitreOeuvre(espaceMateriau, espaceTransport, labelMateriauxOffre, labelTransportOffre);
         Thread maitreOeuvreThread = new Thread(maitreOeuvre);
         maitreOeuvreThread.setDaemon(true);
         maitreOeuvreThread.start();
 
         for (int i = 0; i < 5; i++) {
-            FourniseurMateriau fourniseurMateriau = new FourniseurMateriau(espaceMateriau, materiauxList, materiauxOffreList);
-            SocieteTransport societeTransport = new SocieteTransport(espaceTransport, transportList, transportOffreList);
+            FourniseurMateriau fourniseurMateriau = new FourniseurMateriau(espaceMateriau, materiauxList, materiauxOffreList, maitreOeuvreChoix);
+            SocieteTransport societeTransport = new SocieteTransport(espaceTransport, transportList, transportOffreList, maitreOeuvreChoix);
             Thread fm = new Thread(fourniseurMateriau);
             Thread st = new Thread(societeTransport);
             fm.setDaemon(true);
@@ -54,8 +65,5 @@ public class MainPageController {
             fm.start();
             st.start();
         }
-
-
-
     }
 }

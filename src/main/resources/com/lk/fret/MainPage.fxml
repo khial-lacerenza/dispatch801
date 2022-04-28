@@ -1,31 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXListView?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Separator?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
-
+<?import com.jfoenix.controls.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <AnchorPane id="root" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lk.fret.controller.MainPageController">
    <children>
-      <HBox prefHeight="600.0" prefWidth="800.0">
+      <HBox prefHeight="600.0" prefWidth="1018.0">
          <children>
-            <VBox maxWidth="180.0" minHeight="180.0" minWidth="180.0" prefHeight="200.0" prefWidth="100.0">
+            <VBox maxWidth="305.0" minHeight="180.0" minWidth="180.0" prefHeight="600.0" prefWidth="305.0">
                <children>
                   <Label prefHeight="17.0" prefWidth="150.0" text="Maitre d'oeuvre">
                      <VBox.margin>
                         <Insets left="15.0" right="15.0" top="175.0" />
                      </VBox.margin>
                   </Label>
-                  <JFXListView maxHeight="180.0" maxWidth="180.0" minHeight="180.0" minWidth="120.0" prefHeight="180.0" prefWidth="180.0">
+                  <JFXListView fx:id="maitreOeuvreChoix" maxHeight="200.0" maxWidth="285.0" minHeight="180.0" minWidth="250.0" prefHeight="180.0" prefWidth="285.0">
                      <VBox.margin>
                         <Insets left="15.0" right="15.0" />
                      </VBox.margin>
                   </JFXListView>
-                  <JFXButton fx:id="startBtn" onAction="#onStartBtnClick" ripplerFill="#e27e7e" text="START">
+                  <JFXButton fx:id="startBtn" onAction="#onStartBtnClick" prefHeight="49.0" prefWidth="181.0" ripplerFill="#e27e7e" text="START">
                      <VBox.margin>
                         <Insets left="60.0" top="25.0" />
                      </VBox.margin>
@@ -33,9 +28,9 @@
                </children>
             </VBox>
             <Separator orientation="VERTICAL" prefHeight="200.0" />
-            <VBox prefHeight="600.0" prefWidth="508.0">
+            <VBox prefHeight="600.0" prefWidth="379.0">
                <children>
-                  <Label prefHeight="17.0" prefWidth="184.0" text="Espace de tuples transport">
+                  <Label fx:id="labelTransportOffre" prefHeight="17.0" prefWidth="334.0" text="Espace de tuples transport">
                      <VBox.margin>
                         <Insets left="15.0" top="70.0" />
                      </VBox.margin>
@@ -45,12 +40,12 @@
                         <Insets bottom="15.0" left="15.0" right="15.0" />
                      </VBox.margin>
                   </JFXListView>
-                  <Label layoutX="10.0" layoutY="10.0" prefHeight="17.0" prefWidth="183.0" text="Espace de tuples materiaux">
+                  <Label fx:id="labelMateriauxOffre" layoutX="10.0" layoutY="10.0" prefHeight="17.0" prefWidth="333.0" text="Espace de tuples materiaux">
                      <VBox.margin>
                         <Insets left="15.0" />
                      </VBox.margin>
                   </Label>
-                  <JFXListView fx:id="materiauxOffreList" layoutX="10.0" layoutY="10.0" maxHeight="191.0" maxWidth="1.7976931348623157E308" minHeight="150.0" minWidth="185.0" prefHeight="200.0" prefWidth="335.0">
+                  <JFXListView fx:id="materiauxOffreList" layoutX="10.0" layoutY="10.0" maxHeight="201.0" maxWidth="1.7976931348623157E308" minHeight="150.0" minWidth="185.0" prefHeight="201.0" prefWidth="349.0">
                      <VBox.margin>
                         <Insets bottom="15.0" left="15.0" right="15.0" />
                      </VBox.margin>
@@ -58,7 +53,7 @@
                </children>
             </VBox>
             <Separator orientation="VERTICAL" prefHeight="200.0" />
-            <VBox layoutX="210.0" layoutY="10.0" prefHeight="567.0" prefWidth="386.0">
+            <VBox layoutX="210.0" layoutY="10.0" prefHeight="600.0" prefWidth="300.0">
                <children>
                   <Label text="Société de transport">
                      <VBox.margin>

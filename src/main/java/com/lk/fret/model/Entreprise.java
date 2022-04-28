@@ -5,6 +5,8 @@ import org.jspace.ActualField;
 import org.jspace.FormalField;
 import org.jspace.Space;
 
+import java.security.SecureRandom;
+
 public class Entreprise extends Task<Void> {
 
     private final int id;
@@ -25,12 +27,14 @@ public class Entreprise extends Task<Void> {
         System.out.println(name + " " + id + ": ajoute une offre");
     }
 
-    public void verifMeilleurOffre() throws InterruptedException {
+    public boolean verifMeilleurOffre() throws InterruptedException {
        Object[] tuple = tupleSpace.query(new ActualField("resultatMeilleurOffre"), new FormalField(Integer.class));
        if ((int) tuple[1] == id) {
            System.out.println("Moi thread n°" +id+ " j'ai gagné l'appel d'offre");
+           return true;
        }else {
            System.out.println("Moi thread n°" +id+ " j'ai perdu l'appel d'offre");
+           return false;
        }
     }
 
@@ -54,14 +58,16 @@ public class Entreprise extends Task<Void> {
     @Override
     protected Void call() {
         try {
-            tupleSpace.query(new ActualField("appelOffreOuvert"));
-            ajoutOffre();
-
-
-
+            try {
+                Thread.sleep(new SecureRandom().nextInt(3000) + 1000);
+                tupleSpace.query(new ActualField("appelOffreOuvert"));
+                ajoutOffre();
+            } catch (InterruptedException ignored) {
+                throw new RuntimeException(ignored);
+            }
             verifMeilleurOffre();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        } catch (InterruptedException ignored) {
+            throw new RuntimeException(ignored);
         }
         return null;
     }

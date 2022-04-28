@@ -1,19 +1,33 @@
 package com.lk.fret.model;
 
+import javafx.application.Platform;
 import javafx.concurrent.Task;
+import javafx.scene.control.Label;
+import javafx.scene.paint.Color;
 import org.jspace.ActualField;
 import org.jspace.FormalField;
 import org.jspace.Space;
 
+import java.security.SecureRandom;
+
 public class MaitreOeuvre extends Task<Void> {
 
 
+    Label labelMateriauxOffre;
+    Label labelTransportOffre;
     private Space tupleSpaceMaterial;
     private Space tupleSpaceTransport;
 
     public MaitreOeuvre(Space tupleSpaceMaterial, Space tupleSpaceTransport) {
         this.tupleSpaceMaterial = tupleSpaceMaterial;
         this.tupleSpaceTransport = tupleSpaceTransport;
+    }
+
+    public MaitreOeuvre(Space tupleSpaceMaterial, Space tupleSpaceTransport, Label labelMateriauxOffre, Label labelTransportOffre) {
+        this.tupleSpaceMaterial = tupleSpaceMaterial;
+        this.tupleSpaceTransport = tupleSpaceTransport;
+        this.labelMateriauxOffre = labelMateriauxOffre;
+        this.labelTransportOffre = labelTransportOffre;
     }
 
     public void debutAppeldOffreMateriel() throws InterruptedException {
@@ -24,6 +38,28 @@ public class MaitreOeuvre extends Task<Void> {
     public void debutAppeldOffreTransport() throws InterruptedException {
         System.out.println("Appel offre transport ouvert");
         tupleSpaceTransport.put("appelOffreOuvert");
+    }
+
+    public void debutAppelOffre() throws InterruptedException {
+        debutAppeldOffreTransport();
+        debutAppeldOffreMateriel();
+        Platform.runLater(() -> {
+            labelMateriauxOffre.setText(labelMateriauxOffre.getText() + "           " + "Ouvert");
+            labelMateriauxOffre.setTextFill(Color.GREEN);
+            labelTransportOffre.setText(labelTransportOffre.getText() + "           " + "Ouvert");
+            labelTransportOffre.setTextFill(Color.GREEN);
+        });
+    }
+
+    public void finAppeldOffre() throws InterruptedException {
+        finAppeldOffreTransport();
+        finAppeldOffreMateriel();
+        Platform.runLater(() -> {
+            labelMateriauxOffre.setText("Espace de tuples materiaux" + "            " + "Ferme");
+            labelMateriauxOffre.setTextFill(Color.RED);
+            labelTransportOffre.setText("Espace de tuples transport" + "            " + "Ferme");
+            labelTransportOffre.setTextFill(Color.RED);
+        });
     }
 
     public void finAppeldOffreMateriel() throws InterruptedException {
@@ -91,19 +127,17 @@ public class MaitreOeuvre extends Task<Void> {
 
     @Override
     protected Void call() throws Exception {
-        debutAppeldOffreMateriel();
-        debutAppeldOffreTransport();
+        debutAppelOffre();
 
         try {
-            Thread.sleep(2000);
+            Thread.sleep(new SecureRandom().nextInt(5000) + 2000);
         } catch (InterruptedException interrupted) {
             if (isCancelled()) {
                 updateMessage("Cancelled");
             }
         }
 
-        finAppeldOffreMateriel();
-        finAppeldOffreTransport();
+        finAppeldOffre();
 
         recupOffreTransport();
         recupOffreMateriel();
