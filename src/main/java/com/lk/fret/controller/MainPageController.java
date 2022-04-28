@@ -1,6 +1,7 @@
 package com.lk.fret.controller;
 
 import com.jfoenix.controls.JFXListView;
+import javafx.event.ActionEvent;
 
 public class MainPageController {
 
@@ -12,4 +13,6 @@ public class MainPageController {
         materiauxList.getItems().addAll("Bus", "Tuk Tuk", "Car", "Bike", "Boat");
     }
 
+    public void onStartBtnClick(ActionEvent actionEvent) {
+    }
 }
